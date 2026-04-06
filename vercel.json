@@ -1,0 +1,47 @@
+{
+  "framework": "vite",
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/dist",
+  "installCommand": "cd frontend && npm install",
+  "rewrites": [
+    { "source": "/api/templates/(.*)", "destination": "/api/templates" },
+    { "source": "/api/ai-edit", "destination": "/api/ai-edit" },
+    { "source": "/api/analyze", "destination": "/api/analyze" },
+    { "source": "/api/compile", "destination": "/api/compile" },
+    { "source": "/api/scrape", "destination": "/api/scrape" },
+    { "source": "/api/auth/(.*)", "destination": "/api/auth/[...route]" },
+    { "source": "/api/documents/(.*)", "destination": "/api/documents/[id]" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+      ]
+    }
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "includeFiles": "backend/prisma/**",
+      "runtime": "nodejs20.x"
+    }
+  }
+}

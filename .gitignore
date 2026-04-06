@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Build output
+dist/
+frontend/dist/
+
+# Temp files
+temp/
+backend/temp/
+*.tmp
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+
+# Prisma
+backend/prisma/migrations/**/migration_lock.toml
+
+# Vercel
+.vercel/
