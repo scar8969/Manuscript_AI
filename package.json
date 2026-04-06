@@ -1,0 +1,38 @@
+{
+  "name": "manuscript-ai",
+  "version": "1.0.0",
+  "description": "AI-powered LaTeX resume editor with job scraping and intelligent editing",
+  "type": "module",
+  "bin": {
+    "manuscript-ai": "./cli.js"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "test": "cd frontend && npm test",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "db:migrate": "cd backend && npx prisma migrate deploy",
+    "db:generate": "cd backend && npx prisma generate",
+    "db:push": "cd backend && npx prisma db push"
+  },
+  "keywords": [
+    "resume",
+    "latex",
+    "ai",
+    "editor",
+    "job-scraper"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "concurrently": "^9.2.1",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}
