@@ -32,7 +32,7 @@ describe('aiService', () => {
 
       expect(mockCreate).toHaveBeenCalledWith(
         expect.objectContaining({
-          model: 'meta-llama/llama-3.1-8b-instruct:free',
+          model: 'qwen/qwen3.6-plus:free',
           temperature: 0.1,
           max_tokens: 16000
         })
@@ -132,7 +132,7 @@ describe('aiService', () => {
 
       expect(mockCreate).toHaveBeenCalledWith(
         expect.objectContaining({
-          model: 'google/gemma-2-9b-it:free',
+          model: 'qwen/qwen3.6-plus:free',
           temperature: 0.3,
           max_tokens: 4000
         })
